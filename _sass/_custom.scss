@@ -1,0 +1,156 @@
+/* -----------------------------------------------------------------------------
+   Custom styles — your own overrides live here, not in the theme partials.
+   This file is loaded last in assets/css/main.scss, so anything you write here
+   wins over the theme defaults.
+   -------------------------------------------------------------------------- */
+
+/* --- Reference lists -------------------------------------------------------
+   Used by <ol class="references"> at the bottom of a post. Numbered, with a
+   hanging indent, and the entry you jumped to gets briefly highlighted. */
+
+.post .post-content ol.references {
+  list-style: none;
+  counter-reset: refcounter;
+  padding-left: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+
+  li {
+    counter-increment: refcounter;
+    position: relative;
+    padding: 0.6rem 0.6rem 0.6rem 2.4rem;
+    margin-bottom: 0.35rem;
+    border-radius: 5px;
+    transition: background-color 0.35s ease;
+
+    &::before {
+      content: "[" counter(refcounter) "]";
+      position: absolute;
+      left: 0;
+      top: 0.6rem;
+      color: var(--global-theme-color);
+      font-variant-numeric: tabular-nums;
+    }
+
+    a {
+      word-break: break-all;
+    }
+
+    /* highlight the entry when someone clicks an in-text citation */
+    &:target {
+      background-color: var(--global-code-bg-color);
+    }
+  }
+}
+
+/* --- In-text citations -----------------------------------------------------
+   Links like [(Author, Year)](#ref-author) — keep them readable, not loud. */
+
+.post .post-content a[href^="#ref-"] {
+  color: var(--global-theme-color);
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* --- Tables ----------------------------------------------------------------
+   Slightly roomier rows, a clear header rule, and a hover tint. */
+
+.post .post-content table {
+  width: 100%;
+  margin: 1.75rem 0;
+  font-size: 0.95rem;
+  border-collapse: collapse;
+
+  th {
+    border-bottom: 2px solid var(--global-divider-color);
+    padding: 0.6rem 0.75rem;
+    font-weight: 600;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  td {
+    border-bottom: 1px solid var(--global-divider-color);
+    padding: 0.6rem 0.75rem;
+    vertical-align: top;
+  }
+
+  tbody tr:hover {
+    background-color: var(--global-code-bg-color);
+  }
+}
+
+/* Let table cells wrap on small screens instead of overflowing. */
+@media (max-width: 576px) {
+  .post .post-content table {
+    font-size: 0.85rem;
+
+    th {
+      white-space: normal;
+    }
+  }
+}
+
+/* --- Figure captions -------------------------------------------------------
+   Centred, muted, a little space above. */
+
+.post .post-content figure {
+  margin: 2rem 0;
+
+  figcaption,
+  .caption {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--global-text-color-light);
+    margin-top: 0.75rem;
+  }
+}
+
+/* --- Reusable text helpers -------------------------------------------------
+   Wrap text in these to style it, e.g.
+     <span class="text-accent">important</span>
+     <span class="text-lg">bigger</span>
+     <span class="text-muted-small">an aside</span>
+     <mark>highlighted</mark>
+     <u>underlined</u>                                                       */
+
+.post .post-content {
+  .text-accent {
+    color: var(--global-theme-color);
+  }
+
+  .text-muted-small {
+    color: var(--global-text-color-light);
+    font-size: 0.875rem;
+  }
+
+  .text-lg {
+    font-size: 1.15rem;
+  }
+
+  .text-xl {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .text-sm {
+    font-size: 0.85rem;
+  }
+
+  .lead-in {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--global-text-color-light);
+  }
+
+  mark {
+    background-color: var(--global-tip-block-bg);
+    color: inherit;
+    padding: 0.1em 0.25em;
+    border-radius: 3px;
+  }
+}

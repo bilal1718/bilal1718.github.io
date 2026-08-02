@@ -299,6 +299,18 @@
   ></script>
 {% endif %}
 
+{% if site.enable_cloudflare_analytics and site.cloudflare_analytics_token %}
+  <!-- Cloudflare Web Analytics — cookieless, private to the site owner -->
+  <script
+    {% if site.enable_cookie_consent %}
+      type="text/plain" data-category="analytics"
+    {% endif %}
+    defer
+    src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token": "{{ site.cloudflare_analytics_token }}"}'
+  ></script>
+{% endif %}
+
 {% if site.enable_progressbar %}
   <!-- Scrolling Progress Bar -->
   <script defer src="{{ '/assets/js/progress-bar.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>

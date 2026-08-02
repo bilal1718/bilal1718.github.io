@@ -13,3 +13,16 @@ assets/rendercv/rendercv_output/*.typ
 Gemfile.lock
 node_modules/
 vendor
+
+# --- Local-only files. Notes and helpers for you, not part of the website. ---
+BLOGGING.md
+start-site.bat
+_posts_examples/
+
+# Original figure uploads with spaces in their names. The site uses the
+# cleaned-up copies in assets/img/blog/ instead.
+assets/img/Fig1 . In the context.png
+assets/img/Fig2. HighlyKnown.png
+
+# Placeholder images from the template post. Delete these whenever you like.
+assets/img/blog/example-*.jpg
